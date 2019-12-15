@@ -7,4 +7,4 @@ class User(auth.models.User):
         proxy = True
 
     def __str__(self):
-        return "@{}".format(self.username)
+        return "@{}".format(self.email)
