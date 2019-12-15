@@ -39,6 +39,8 @@ class SubMember(models.Model):
         return self.user.username
 
     class Meta:
-        unique_together = ('sub', 'user')
+        constraints = [
+            models.UniqueConstraint(fields=['sub', 'user'], name='unique_membership'),
+        ]
 
 
