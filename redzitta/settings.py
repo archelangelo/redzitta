@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'bootstrap4',
     'home',
     'accounts',
+    'subs',
+    'posts',
 ]
 
 MIDDLEWARE = [

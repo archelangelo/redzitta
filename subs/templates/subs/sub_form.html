@@ -1,0 +1,12 @@
+{% extends 'subs/sub_base.html' %}
+{% load bootstrap4 %}
+
+{% block sub_content %}
+  <h4>Create a new sub</h4>
+
+  <form method="POST" id="sub_form">
+    {% csrf_token %}
+    {% bootstrap4 form %}
+    <intput type="submit" name="btn btn-primary" value="Create"></intput>
+  </form>
+{% endblock %}

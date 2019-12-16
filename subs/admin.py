@@ -1,3 +1,7 @@
 from django.contrib import admin
+from . import models
 
-# Register your models here.
+class SubMemberInline(admin.TabularInline):
+    model = models.SubMember
+
+admin.site.register(models.Sub)

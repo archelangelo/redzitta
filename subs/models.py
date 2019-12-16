@@ -13,7 +13,7 @@ class Sub(models.Model):
     name = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(allow_unicode=True, unique=True)
     description = models.TextField(blank=True, default='')
-    description_html models.TextField(blank=True, editable=False, default='')
+    description_html = models.TextField(blank=True, editable=False, default='')
     members = models.ManyToManyField(User, through='SubMember')
 
     def __str__(self):
@@ -25,7 +25,7 @@ class Sub(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('groups:single', kwargs={'slug': self.slug})
+        return reverse('subs:single', kwargs={'slug': self.slug})
 
     class Meta:
         ordering = ['name']

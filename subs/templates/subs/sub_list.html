@@ -1,0 +1,44 @@
+{% extends 'subs/sub_base.html' %}
+
+{% block presub %}
+  <div class="col-md-4">
+    <div class="content">
+      {% if user.is_authenticated %}
+        <h2>
+          <a href="{% url 'posts:for_user' username=user.username %}">
+            @{{ user.username }}
+          </a>
+        </h2>
+      {% endif %}
+      <h2>Subs</h2>
+    </div>
+    {% if user.is_authenticated %}
+      <a href="{% url 'subs:create' %}" class="btn btn-primary"><span class="iconify" data-icon="whh:plussign" data-inline="false"></span></a>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block sub_content %}
+  <div class="col-md-8">
+    <div class="sub-list">
+      {% for sub in object_list %}
+        <a class="sub-list-item" href="{% url 'subs:detail' slug=sub.slug %}">
+          <h3 class="title sub-list-item-heading">{{ sub.name }}</h3>
+          <div class="sub-list-item-text container-fluid">
+            {{ sub.description_html|safe }}
+            <div class="row">
+              <div class="col-md-4">
+                <span class="badge">{{ sub.members.count }}</span>
+                member{{ sub.members.count|pluralize }}
+              </div>
+              <div class="col-md-4">
+                <span class="badge">{{ sub.posts.count }}</span>
+                post{{ sub.posts.count|pluralize }}
+              </div>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'subs/sub_base.html' %}
+{% block presub %}
+
+  <h1>{{ sub.name }}</h1>
+  <h2>Member Count: {{ sub.members.count }}</h2>
+
+  <div class="content">
+    {% if user in sub.members.all %}
+      <a href="{% url 'subs:leave' slug=sub.slug %}" class="btn btn-warning">Leave</a>
+    {% else %}
+      <a href="{% url 'subs:join' slug=sub.slug %}" class="btn btn-primary">Join</a>
+    {% endif %}
+  </div>
+
+{% endblock %}
+
+{% block sub_content %}
+
+  {% if sub.posts.count==0 %}
+    <h2>Members in this sub are quite lazy. There aren't any posts yet.</h2>
+  {% else %}
+    {% for post in sub.posts.all %}
+      {% include 'posts/_post.html' %}
+    {% endfor %}
+  {% endif %}
+
+{% endblock %}
