@@ -8,13 +8,13 @@ from django.views import generic
 
 from .models import Sub, SubMember
 
-class CreateSubView(LoginRequiredMixin, generic.CreateView):
+class SubCreate(LoginRequiredMixin, generic.CreateView):
     fields = ('name', 'description')
     model = Sub
 
-class SubDetailView(generic.DetailView):
+class SubDetail(generic.DetailView):
     model = Sub
 
-class SubListView(generic.ListView):
+class SubList(generic.ListView):
     models = Sub
     

@@ -15,12 +15,11 @@ Including another URLconf
 """
 from . import views
 from django.urls import path
-from django.contrib.auth import views as auth_views
 
-# app_name = 'subs'
+app_name = 'subs'
 
 urlpatterns = [
-    path('', views.SubListView.as_view(), name='list'),
-    path('create/', views.CreateSubView.as_view(), name='create'),
-    path('<int:slug>/posts/', views.SubDetailView.as_view(), name='detail'),
+    path('', views.SubList.as_view(), name='list'),
+    path('create/', views.SubCreate.as_view(), name='create'),
+    path('detail/<slug:slug>/', views.SubDetail.as_view(), name='detail'),
 ]
