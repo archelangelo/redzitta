@@ -1,0 +1,40 @@
+{% extends "posts/post_base.html" %}
+
+{% block prepost %}
+  <div class="col-md-4">
+    {% if request.user.is_authenticated %}
+      <div class="card card-with-shadow">
+        <div class="content">
+          <h5 class="title">Your Subs</h5>
+          <ul class="list-unstyled">
+            {% for member_sub in get_user_subs %}
+              <li class="sub-li li-with-bullet">
+                <a href="{% url 'subs:detail' slug=member_sub.sub.slug %}">{{ member_sub.sub }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endif %}
+    <div class="car card-with-shadow">
+      <div class="content">
+        <h5 class="title">All Subs</h5>
+        <ul class="list-unstyled">
+          {% for other_sub in get_other_sub %}
+            <li class="sub-li li-with-bullet">
+              <a href="{% url 'subs:detail' slug=other_sub.sub.slug %}">{{ other_sub.sub }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block post_content %}
+  <div class="col-md-8">
+    {% for post in post_list %}
+      {% includ "posts/_post.html" %}
+    {% endfor %}
+  </div>
+{% endblock %}

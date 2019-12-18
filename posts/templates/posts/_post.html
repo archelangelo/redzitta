@@ -1,0 +1,18 @@
+<div class="post media">
+  <h3>{{ post.message_html|safe }}</h3>
+  <div class="media-body">
+    <h5 class="media-heading"></h5>
+    <span class="username">
+      <a href="{% url 'posts:byuser' username=post.user.username %}">{{ post.user }}</a>
+    </span>
+    <time class="time">
+      <a href="{% url 'posts:detail' pk=post.pk %}"></a>
+    </time>
+
+    <div class="media-footer">
+      {% if user.is_authenticated and post.user == user and not hide_delete %}
+        <a href="{% url 'posts:delete' pk=post.pk %}" title="delete" class="btn btn-danger">Delete</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
