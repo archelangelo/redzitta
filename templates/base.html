@@ -33,21 +33,24 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
+        <!-- <ul class="navbar-nav mr-auto">
           <li class="nav-item"><a class="nav-link" href="#">link 1</a></li>
           <li class="nav-item"><a class="nav-link" href="#">link 2</a></li>
           <li class="nav-item"><a class="nav-link" href="#">link 3</a></li>
-        </ul>
+        </ul> -->
         {% if user.is_authenticated %}
           <span class="navbar-text welcome-user">
             {{ user }}
           </span>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#">Post</a>
+              <a class="nav-link" href="{% url 'posts:create' %}">Post</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Drafts</a>
+                <a class="nav-link" href="{% url 'subs:list' %}">Subs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'subs:create' %}">Create a Sub</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Log Out</a>

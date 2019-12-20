@@ -22,6 +22,6 @@ urlpatterns = [
     path('', views.SubList.as_view(), name='list'),
     path('create/', views.SubCreate.as_view(), name='create'),
     path('detail/<slug:slug>/', views.SubDetail.as_view(), name='detail'),
-    path('join/<slug:slug>/', views.SubJoin.asView(), name='join'),
+    path('join/<slug:slug>/', views.SubJoin.as_view(), name='join'),
     path('leave/<slug:slug>', views.SubLeave.as_view(), name='leave'),
 ]

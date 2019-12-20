@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from django.http import Http404
+from django.contrib import messages
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -28,11 +29,14 @@ class UserPosts(ListView):
         context['post_user'] = self.post_user
         return context
 
-class PostDetail(DeleteView):
+class PostDetail(DetailView):
+    model = models.Post
+
+class PostDelete(DeleteView):
     model = models.Post
 
 class PostCreate(LoginRequiredMixin, CreateView):
-    fields = ['message', 'group']
+    fields = ['message', 'sub']
     model = models.Post
 
     def form_valid(self, form):
