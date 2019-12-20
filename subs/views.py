@@ -19,7 +19,7 @@ class SubDetail(generic.DetailView):
     model = Sub
 
 class SubList(generic.ListView):
-    models = Sub
+    model = Sub
 
 class SubJoin(LoginRequiredMixin, generic.RedirectView):
     

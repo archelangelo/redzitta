@@ -16,7 +16,7 @@
 
 {% block sub_content %}
 
-  {% if sub.posts.count==0 %}
+  {% if sub.posts.count == 0 %}
     <h2>Members in this sub are quite lazy. There aren't any posts yet.</h2>
   {% else %}
     {% for post in sub.posts.all %}

@@ -25,7 +25,7 @@ class Sub(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('subs:single', kwargs={'slug': self.slug})
+        return reverse('subs:detail', kwargs={'slug': self.slug})
 
     class Meta:
         ordering = ['name']
