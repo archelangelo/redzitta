@@ -39,7 +39,7 @@
           <li class="nav-item"><a class="nav-link" href="#">link 3</a></li>
         </ul> -->
         {% if user.is_authenticated %}
-          <span class="navbar-text welcome-user">
+          <span class="navbar-text welcome-user ml-auto">
             {{ user }}
           </span>
           <ul class="navbar-nav">
@@ -57,7 +57,7 @@
             </li>
           </ul>
         {% else %}
-          <ul class="navbar-nav">
+          <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <a class="nav-link" href="{% url 'login' %}">Log In</a>
             </li>
