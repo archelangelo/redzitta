@@ -24,7 +24,7 @@ class SubList(generic.ListView):
 class SubJoin(LoginRequiredMixin, generic.RedirectView):
     
     def get_redirect_url(self, *args, **kwargs):
-        return reverse('subs:detail', {'slug': self.kwargs.get('slug')})
+        return reverse('subs:detail', kwargs={'slug': self.kwargs.get('slug')})
 
     def get(self, request, *args, **kwargs):
         sub = get_object_or_404(Sub, slug=self.kwargs.get('slug'))
